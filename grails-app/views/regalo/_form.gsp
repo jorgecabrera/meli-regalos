@@ -2,12 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: regaloInstance, field: 'fechaDeAsignacion', 'error')} required">
-	<label for="fechaDeAsignacion">
-		<g:message code="regalo.fechaDeAsignacion.label" default="Fecha De Asignacion" />
+<div class="fieldcontain ${hasErrors(bean: regaloInstance, field: 'anio', 'error')} required">
+	<label for="anio">
+		<g:message code="regalo.anio.label" default="Anio" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="fechaDeAsignacion" precision="day"  value="${regaloInstance?.fechaDeAsignacion}"  />
+	<g:field name="anio" type="number" value="${regaloInstance.anio}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: regaloInstance, field: 'empleado', 'error')} required">
+	<label for="empleado">
+		<g:message code="regalo.empleado.label" default="Empleado" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="empleado" name="empleado.id" from="${meli.regalos.Empleado.list()}" optionKey="id" required="" value="${regaloInstance?.empleado?.id}" class="many-to-one"/>
 
 </div>
 

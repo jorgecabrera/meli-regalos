@@ -23,11 +23,20 @@
 			</g:if>
 			<ol class="property-list regalo">
 			
-				<g:if test="${regaloInstance?.fechaDeAsignacion}">
+				<g:if test="${regaloInstance?.anio}">
 				<li class="fieldcontain">
-					<span id="fechaDeAsignacion-label" class="property-label"><g:message code="regalo.fechaDeAsignacion.label" default="Fecha De Asignacion" /></span>
+					<span id="anio-label" class="property-label"><g:message code="regalo.anio.label" default="Anio" /></span>
 					
-						<span class="property-value" aria-labelledby="fechaDeAsignacion-label"><g:formatDate date="${regaloInstance?.fechaDeAsignacion}" /></span>
+						<span class="property-value" aria-labelledby="anio-label"><g:fieldValue bean="${regaloInstance}" field="anio"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${regaloInstance?.empleado}">
+				<li class="fieldcontain">
+					<span id="empleado-label" class="property-label"><g:message code="regalo.empleado.label" default="Empleado" /></span>
+					
+						<span class="property-value" aria-labelledby="empleado-label"><g:link controller="empleado" action="show" id="${regaloInstance?.empleado?.id}">${regaloInstance?.empleado?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

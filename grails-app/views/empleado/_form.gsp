@@ -34,7 +34,16 @@
 		<g:message code="empleado.regalos.label" default="Regalos" />
 		
 	</label>
-	<g:select name="regalos" from="${meli.regalos.Regalo.list()}" multiple="multiple" optionKey="id" size="5" value="${empleadoInstance?.regalos*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${empleadoInstance?.regalos?}" var="r">
+    <li><g:link controller="regalo" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="regalo" action="create" params="['empleado.id': empleadoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'regalo.label', default: 'Regalo')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 
