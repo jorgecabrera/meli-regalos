@@ -4,7 +4,7 @@ class Empleado {
 	String nombre="";
 	String apellido="";
 	Date fechaNacimiento=new Date();
-	static hasMany = {Regalo:regalos}
+	static hasMany = {regalos:Regalo}
     static constraints = {
     }
 	def agregarRegalo(Regalo regalo){
