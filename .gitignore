@@ -21,8 +21,7 @@
 # plugin release files
 /*.zip
 /plugin.xml
-# el project
-*.project
+
 # older plugin install locations
 /plugins
 /web-app/plugins
