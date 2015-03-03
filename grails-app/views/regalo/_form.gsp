@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: regaloInstance, field: 'imagen', 'error')} ">
+	<label for="imagen">
+		<g:message code="regalo.imagen.label" default="Imagen" />
+		
+	</label>
+	<g:textField name="imagen" value="${regaloInstance?.imagen}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: regaloInstance, field: 'anio', 'error')} required">
 	<label for="anio">
 		<g:message code="regalo.anio.label" default="Anio" />

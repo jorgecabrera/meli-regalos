@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${regaloInstance?.imagen}">
+				<li class="fieldcontain">
+					<span id="imagen-label" class="property-label"><g:message code="regalo.imagen.label" default="Imagen" /></span>
+					
+						<span class="property-value" aria-labelledby="imagen-label"><g:fieldValue bean="${regaloInstance}" field="imagen"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${regaloInstance?.anio}">
 				<li class="fieldcontain">
 					<span id="anio-label" class="property-label"><g:message code="regalo.anio.label" default="Anio" /></span>
