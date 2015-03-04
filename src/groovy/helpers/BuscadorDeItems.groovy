@@ -2,7 +2,7 @@ package helpers
 
 class BuscadorDeItems{
 	static final urlML="https://api.mercadolibre.com/sites/MLA/search";
-/*	def buscarItems(String busqueda){
+	def buscarItems(String busqueda){
 		when:"list with  application/json accept"
 		get("$urlML") {
 			headers['Content-Type'] = 'application/json'
@@ -28,4 +28,4 @@ class BuscadorDeItems{
 		null == json[0].numParts
 		null == json[0].sha1
 	}
-*/}
+}
