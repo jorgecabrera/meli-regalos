@@ -21,4 +21,8 @@ class Empleado {
 	public String toString(){
 		return nombre +' ' +apellido;
 	}
+	def filtrarRegalosPorFecha(Date fecha){
+		def regalo = regalos.findAll{ it.anio = anioDeFecha }.flatten();
+		regalos = regalo;
+	}
 }
