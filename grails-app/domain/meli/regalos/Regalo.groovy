@@ -1,6 +1,6 @@
 package meli.regalos
 
-//import ItemML;
+import helpers.ItemML;
 
 
 
@@ -14,9 +14,9 @@ class Regalo {
 		descripcion nullable:true;
 		imagen nullable:true
 	}
-/*	public Regalo(ItemML item){
+	public Regalo(ItemML item){
 		imagen=item.imagen;
 		descripcion=item.descripcion;
 		url=item.url;
-	}*/
+	}
 }
