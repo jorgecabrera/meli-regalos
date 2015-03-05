@@ -4,8 +4,12 @@
 <meta name="layout" content="formatoAplicacion">
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!--  <link rel="stylesheet" type="text/css"
+	href="${resource(dir:'css',file:'bootstrap.css') }" />-->
+
 </head>
 <body>
+	<input type="hidden" id="idItem" value="${id }">
 	<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
@@ -16,20 +20,97 @@
 		</ul>
 	</div>
 	<div id="show-item" class="content scaffold-show" role="main">
-		<h1 id="titulo-item">
-			Mostrando item
-		</h1>
+		<h1 id="titulo-item">Mostrando item </h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
 			</div>
 		</g:if>
-		<ol id="lista-items">
-			<li class="fieldcontain"></li>
-
-			<li class="fieldcontain"></li>
-
-		</ol>
+		<div id="mostrador-item" class="list-unstyled" align="center">
+		</div>
 	</div>
+	<script type="text/javascript">
+		console.log($("#idItem").attr("value"))
+		var promise = $.get("https://api.mercadolibre.com/items/"
+				+ $("#idItem").attr("value"));
+		console.log("Punto 2");
+		promise.done(mostrarResultado);
+		console.log("Punto 3");
+		promise.fail(mostrarError);
+		console.log("Punto 4");
+		function mostrarResultado(data) {
+			console.log("Punto 5");
+			$("#titulo-item").append(data.title)
+			agregarResultado(data);
+		}
+		function agregarResultado(item) {
+			var tabla= document.createElement("table")
+			var thead=document.createElement("thead")
+			var filaTitulos = document.createElement("tr")
+			var tituloIzq=document.createElement("th");
+			var textTituloIzq=document.createTextNode("Campo");
+			tituloIzq.appendChild(textTituloIzq);
+			var tituloDer=document.createElement("th");
+			var textTituloDer=document.createTextNode("Valor");
+			tituloDer.appendChild(textTituloDer);
+			filaTitulos.appendChild(tituloIzq);
+			filaTitulos.appendChild(tituloDer);
+			thead.appendChild(filaTitulos);
+			tabla.appendChild(thead)
+			var tblBody = document.createElement("tbody")
+			var titulo = document.createElement("tr");
+			var imagen = document.createElement("tr");
+			var precio = document.createElement("tr");
+			var url = document.createElement("tr");
+			// Crea un elemento <td> y un nodo de texto, haz que el nodo de
+			// texto sea el contenido de <td>, ubica el elemento <td> al final
+			// de la hilera de la tabla
+			insertarFila(titulo,"Titulo", item.title)
+			var clave = document.createElement("td");
+			var textoClave = document.createTextNode("Imagen");
+			clave.appendChild(textoClave);
+			var valor = document.createElement("td")
+			var laImagen = document.createElement("img")
+			laImagen.src=item.thumbnail
+			valor.appendChild(laImagen);
+			imagen.appendChild(clave);
+			imagen.appendChild(valor);
+			insertarFila(precio,"Precio", item.price)
+			clave = document.createElement("td");
+			textoClave = document.createTextNode("URL");
+			clave.appendChild(textoClave);
+			valor = document.createElement("td")
+			valor.innerHTML="<a href='"+item.permalink+"'>"+item.permalink+"</a>"
+			url.appendChild(clave);
+			url.appendChild(valor);
+			
+			// agrega la hilera al final de la tabla (al final del elemento tblbody)
+			tblBody.appendChild(titulo);
+			tblBody.appendChild(imagen);
+			tblBody.appendChild(precio);
+			tblBody.appendChild(url);
+			console.log("despues del tittle " + item.title);
+			tabla.appendChild(tblBody)
+			
+			var miDiv=document.getElementById("mostrador-item");
+			miDiv.appendChild(tabla)
+		}
+		function insertarFila(fila,texto,valor){
+			campoIzquierdo = document.createElement("td")
+			campoDerecho = document.createElement("td")
+			textoIzquierdo = document.createTextNode(texto);
+			textoDerecho = document.createTextNode(valor);
+			campoIzquierdo.appendChild(textoIzquierdo);
+			campoDerecho.appendChild(textoDerecho);
+			fila.appendChild(campoIzquierdo);
+			fila.appendChild(campoDerecho)
+			}
+		function mostrarError() {
+			console.log("Punto 6");
+			$("#respuesta_api").html("<li>Se produjo un errors</li>");
+		}
+		console.log("Punto 7");
+	</script>
+
 </body>
 </html>
