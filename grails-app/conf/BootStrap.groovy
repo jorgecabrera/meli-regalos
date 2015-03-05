@@ -10,7 +10,8 @@ class BootStrap {
 	def crearEmpleados(){
 		def jorge = new Empleado(nombre: "Jorge", apellido: "Cabrera",fechaNacimiento:Date.parse('yyyy-MM-dd','1991-12-06').clearTime());
 		def uriel = new Empleado(nombre: "Uriel", apellido:"Mysler", fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-29').clearTime());
-		def sebastian = new Empleado(nombre: "Sebastian", apellido:"Garcia",fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-30').clearTime());
+		def sebastian = new Empleado(nombre: "Sebastian", apellido:"Garcia",fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-04').clearTime());
+		def marcos = new Empleado(nombre: "Sebastian", apellido:"Garcia",fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-04').clearTime());
 		def erik = new Empleado(nombre: "Erik" , apellido: "Brandwein",fechaNacimiento:Date.parse('yyyy-MM-dd','1997-04-01').clearTime());
 		def francisco = new Empleado(nombre: "Francisco" , apellido: "Curdi",fechaNacimiento:Date.parse('yyyy-MM-dd','1997-03-29').clearTime());
 		def pelota = new Regalo(fechaEntrega:Date.parse('yyyy-MM-dd','2015-12-06').clearTime(), url:"http://articulo.mercadolibre.com.ar/MLA-542474342-balon-oficial-velez-oficial-_JM");
@@ -20,6 +21,7 @@ class BootStrap {
 		uriel.agregarRegalo(remera);
 		uriel.agregarRegalo(tablet);
 		jorge.save(flush:true);
+		marcos.save(flush:true);
 		uriel.save(flush:true);
 		erik.save(flush:true);
 		francisco.save(flush:true);

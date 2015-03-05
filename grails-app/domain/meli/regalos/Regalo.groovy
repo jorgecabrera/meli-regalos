@@ -15,5 +15,6 @@ class Regalo {
 		descripcion nullable:true;
 		imagen nullable:true;
 		anio nullable:true;
+		fechaEntrega nullable:true;
 	}
 }

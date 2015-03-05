@@ -28,6 +28,19 @@
 		</g:if>
 		<div id="mostrador-item" class="list-unstyled" align="center">
 		</div>
+		<div>
+			<div align="center">
+				<form action="${createLink(controller:'regalo',action:'save') }" method="post">
+					<g:hiddenField name="descripcion" id="desc"/>
+					<g:hiddenField name="precio" id="precio"/>
+					<g:hiddenField name="imagen" id="imagen"/>
+					<g:hiddenField name="url" id="url"/>
+					<g:hiddenField name="empleado" id="idEmpleado" value="${idEmpleado }"/>
+					<input type="submit">	
+				</form>
+							
+			</div>
+		</div>
 	</div>
 	<script type="text/javascript">
 		console.log($("#idItem").attr("value"))
@@ -41,6 +54,10 @@
 		function mostrarResultado(data) {
 			console.log("Punto 5");
 			$("#titulo-item").append(data.title)
+			$("#desc").val(data.title)
+			$("#precio").val(data.price)
+			$("#imagen").val(data.thumbnail)
+			$("#url").val(data.permalink)
 			agregarResultado(data);
 		}
 		function agregarResultado(item) {

@@ -8,97 +8,115 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class RegaloController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Regalo.list(params), model:[regaloInstanceCount: Regalo.count()]
-    }
+	def index(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond Regalo.list(params), model:[regaloInstanceCount: Regalo.count()]
+	}
 
-    def show(Regalo regaloInstance) {
-        respond regaloInstance
-    }
+	def show(Regalo regaloInstance) {
+		respond regaloInstance
+	}
 
-    def create() {
-        respond new Regalo(params)
-    }
+	def create() {
+		respond new Regalo(params)
+	}
 
-    @Transactional
-    def save(Regalo regaloInstance) {
-        if (regaloInstance == null) {
-            notFound()
-            return
-        }
+	@Transactional
+	def save(Regalo regaloInstance) {
+		println regaloInstance.fechaEntrega
+		if (regaloInstance == null) {
+			notFound()
+			return
+		}
 
-        if (regaloInstance.hasErrors()) {
-            respond regaloInstance.errors, view:'create'
-            return
-        }
+		if (regaloInstance.hasErrors()) {
+			respond regaloInstance.errors, view:'create'
+			return
+		}
+		def fechaComparacion=new Date();
+		fechaComparacion.setYear(regaloInstance.empleado.fechaNacimiento.year)
+		regaloInstance.fechaEntrega=new Date();
+		regaloInstance.fechaEntrega=regaloInstance.empleado.fechaNacimiento;
+		regaloInstance.fechaEntrega.year=((fechaComparacion >=regaloInstance.empleado.fechaNacimiento)?new Date().year+1:new Date().year);
+		println regaloInstance.fechaEntrega
+		regaloInstance.save flush:true
+		println regaloInstance.errors
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [
+					message(code: 'regalo.label', default: 'Regalo'),
+					regaloInstance.id
+				])
+				redirect regaloInstance
+			}
+			'*' { respond regaloInstance, [status: CREATED] }
+		}
+	}
 
-        regaloInstance.save flush:true
+	def edit(Regalo regaloInstance) {
+		respond regaloInstance
+	}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'regalo.label', default: 'Regalo'), regaloInstance.id])
-                redirect regaloInstance
-            }
-            '*' { respond regaloInstance, [status: CREATED] }
-        }
-    }
+	@Transactional
+	def update(Regalo regaloInstance) {
+		if (regaloInstance == null) {
+			notFound()
+			return
+		}
 
-    def edit(Regalo regaloInstance) {
-        respond regaloInstance
-    }
+		if (regaloInstance.hasErrors()) {
+			respond regaloInstance.errors, view:'edit'
+			return
+		}
 
-    @Transactional
-    def update(Regalo regaloInstance) {
-        if (regaloInstance == null) {
-            notFound()
-            return
-        }
+		regaloInstance.save flush:true
 
-        if (regaloInstance.hasErrors()) {
-            respond regaloInstance.errors, view:'edit'
-            return
-        }
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [
+					message(code: 'Regalo.label', default: 'Regalo'),
+					regaloInstance.id
+				])
+				redirect regaloInstance
+			}
+			'*'{ respond regaloInstance, [status: OK] }
+		}
+	}
 
-        regaloInstance.save flush:true
+	@Transactional
+	def delete(Regalo regaloInstance) {
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Regalo.label', default: 'Regalo'), regaloInstance.id])
-                redirect regaloInstance
-            }
-            '*'{ respond regaloInstance, [status: OK] }
-        }
-    }
+		if (regaloInstance == null) {
+			notFound()
+			return
+		}
 
-    @Transactional
-    def delete(Regalo regaloInstance) {
+		regaloInstance.delete flush:true
 
-        if (regaloInstance == null) {
-            notFound()
-            return
-        }
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [
+					message(code: 'Regalo.label', default: 'Regalo'),
+					regaloInstance.id
+				])
+				redirect action:"index", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
 
-        regaloInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Regalo.label', default: 'Regalo'), regaloInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'regalo.label', default: 'Regalo'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+	protected void notFound() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [
+					message(code: 'regalo.label', default: 'Regalo'),
+					params.id
+				])
+				redirect action: "index", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }
