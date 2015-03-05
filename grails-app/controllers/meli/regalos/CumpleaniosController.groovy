@@ -4,8 +4,8 @@ class CumpleaniosController {
 
     def index() { }
 	def verCumpleanios(){
-		Date fechaActual = params.get("id");
-		println "la fecha actual es "+fechaActual	;
+		def fechaActual = params.get("fecha");
+		println "la fecha actual es "+fechaActual;
 		if(fechaActual == null){ 
 				println "entro a este scope"
 				fechaActual =  Date.parse('yyyy-MM-dd','1993-03-29').clearTime();
