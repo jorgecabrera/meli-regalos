@@ -1,7 +1,7 @@
 	<!Doctype html>
 <html>
 <head>
-	<meta name="layout" content="main">
+	<meta name="layout" content="formatoAplicacion">
 	<link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'bootstrap.css') }" />
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="${resource(dir:'js',file:'bootstrap.min.js') }"></script>

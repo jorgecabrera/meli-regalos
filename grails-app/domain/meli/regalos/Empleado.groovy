@@ -22,7 +22,7 @@ class Empleado {
 	public String toString(){
 		return nombre +' ' +apellido;
 	}
-	def filtrarRegalosPorFecha(Date fecha){
+	def filtrarRegaloPorAnio(Date fecha){
 		def anioDeFecha = fecha.getAt(Calendar.YEAR);
 		regalos = regalos.findAll{it.anio == anioDeFecha};
 	}
