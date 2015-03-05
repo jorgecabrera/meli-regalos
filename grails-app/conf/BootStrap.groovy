@@ -8,10 +8,10 @@ class BootStrap {
     def destroy = {
     }
 	def crearEmpleados(){
-		def jorge = new Empleado(nombre: "Jorge", apellido: "Cabrera",cumpleanio:"6-12",fechaNacimiento:Date.parse('yyyy-MM-dd','1991-06-12'));
+		def jorge = new Empleado(nombre: "Jorge", apellido: "Cabrera",cumpleanio:"6-12",fechaNacimiento:Date.parse('yyyy-MM-dd','1991-12-06'));
 		def uriel = new Empleado(nombre: "Uriel", apellido:"Mysler",cumpleanio:"3-29", fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-29'));
 		def sebastian = new Empleado(nombre: "Sebastian", apellido:"Garcia",cumpleanio:"3-30", fechaNacimiento:Date.parse('yyyy-MM-dd','1993-03-30'));
-		def erik = new Empleado(nombre: "Erik" , apellido: "Brandwein",cumpleanio:"4-01", fechaNacimiento:Date.parse('yyyy-MM-dd','1997-04-01'));
+		def erik = new Empleado(nombre: "Erik" , apellido: "Brandwein",cumpleanio:"4-1", fechaNacimiento:Date.parse('yyyy-MM-dd','1997-04-01'));
 		def francisco = new Empleado(nombre: "Francisco" , apellido: "Curdi",cumpleanio:"3-29", fechaNacimiento:Date.parse('yyyy-MM-dd','1997-03-29'));
 		def pelota = new Regalo(anio: 2015, url:"http://articulo.mercadolibre.com.ar/MLA-542474342-balon-oficial-velez-oficial-_JM");
 		def remera = new Regalo(anio: 2015, url: "http://articulo.mercadolibre.com.ar/MLA-548375082-remera-paez-gris-con-bolsillo-verde-_JM");
