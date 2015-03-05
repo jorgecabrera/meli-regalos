@@ -15,8 +15,7 @@
 		</div>
 	</g:each>
 	<g:hiddenField name="fechaSiguiente" value="${fecha.next()}"/>		<!-- a href = "link"-->
-	<g:hiddenField name="fechaAnterior" value="${fecha.previous()}"/>
-	<g:submitButton name="Anterior" action="verCumpleaniosAnteriores"/>
+	<!-- <g:hiddenField name="fechaAnterior" value="${fecha.previous()}"/> -->
 	<g:submitButton name="Siguiente" action="verCumpleanios"/>
 </body>
 </html>

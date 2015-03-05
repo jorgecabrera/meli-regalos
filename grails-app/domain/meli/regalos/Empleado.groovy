@@ -22,7 +22,8 @@ class Empleado {
 		return nombre +' ' +apellido;
 	}
 	def filtrarRegalosPorFecha(Date fecha){
-		def regalo = regalos.findAll{ it.anio = anioDeFecha }.flatten();
-		regalos = regalo;
+		def anioDeFecha = fecha.getAt(Calendar.YEAR);
+		println "anio "+anioDeFecha;
+		regalos = regalos.findAll{it.anio == anioDeFecha};
 	}
 }
