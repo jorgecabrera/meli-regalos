@@ -3,6 +3,7 @@ package meli.regalos
 class Empleado {
 	String nombre;
 	String apellido;
+	String cumpleanio;
 	Date fechaNacimiento;
 	static hasMany = [regalos: Regalo]
     static constraints = {
@@ -23,7 +24,6 @@ class Empleado {
 	}
 	def filtrarRegalosPorFecha(Date fecha){
 		def anioDeFecha = fecha.getAt(Calendar.YEAR);
-		println "anio "+anioDeFecha;
 		regalos = regalos.findAll{it.anio == anioDeFecha};
 	}
 }
