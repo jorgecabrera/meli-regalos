@@ -7,12 +7,13 @@ import helpers.ItemML;
 class Regalo {
 	String url;
 	int anio;
-	int fechaEntrega;
+	Date fechaEntrega;
 	String descripcion;
 	String imagen;
 	static belongsTo= [empleado:Empleado];
 	static constraints = { empleado nullable:true;
 		descripcion nullable:true;
-		imagen nullable:true
+		imagen nullable:true;
+		anio nullable:true;
 	}
 }

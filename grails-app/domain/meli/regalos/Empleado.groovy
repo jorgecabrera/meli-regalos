@@ -3,7 +3,6 @@ package meli.regalos
 class Empleado {
 	String nombre;
 	String apellido;
-	String cumpleanio;
 	Date fechaNacimiento;
 	static hasMany = [regalos: Regalo]
     static constraints = {

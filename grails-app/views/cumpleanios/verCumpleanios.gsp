@@ -37,11 +37,10 @@
 		<div class="pagination">
 			<g:paginate total="${empleadoInstanceCount ?: 0}" />
 		</div>
-		<g:form action="verCumpleanios">
-			<g:hiddenField name="fecha" value="${fecha.next()}" />
-			<g:actionSubmit value="Anterior" action="cumpleanioAnterior" />
-			<g:actionSubmit value="Siguiente" action="cumpleanioSiguiente" />
-		</g:form>
+		<g:link controller="cumpleanios" var="fecha" value="${fecha.previous()}"
+			action="verCumpleanios">Anterior</g:link>
+		<g:link controller="cumpleanios" var="fecha" value="${fecha.next()}"
+			action="verCumpleanios">Siguiente</g:link>
 	</div>
 </body>
 </html>
