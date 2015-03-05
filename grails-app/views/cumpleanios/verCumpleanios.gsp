@@ -39,11 +39,8 @@
 		</div>
 		<g:form action="verCumpleanios">
 			<g:hiddenField name="fecha" value="${fecha.next()}" />
-			<!-- a href = "link"-->
-			<!-- <g:hiddenField name="fechaAnterior" value="${fecha.previous()}"/> -->
-			<g:actionSubmit value="Siguiente"
-				onclick="return confirm('¿Desea ver los siguientes cumpleaños?')"
-				action="verCumpleanios" />				
+			<g:actionSubmit value="Anterior" action="cumpleanioAnterior" />
+			<g:actionSubmit value="Siguiente" action="cumpleanioSiguiente" />
 		</g:form>
 	</div>
 </body>
