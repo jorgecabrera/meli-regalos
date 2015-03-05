@@ -37,9 +37,9 @@
 		<div class="pagination">
 			<g:paginate total="${empleadoInstanceCount ?: 0}" />
 		</div>
-		<g:link controller="cumpleanios" var="fecha" value="${fecha.previous()}"
+		<g:link controller="cumpleanios" params="[fecha:fecha.previous()]"
 			action="verCumpleanios">Anterior</g:link>
-		<g:link controller="cumpleanios" var="fecha" value="${fecha.next()}"
+		<g:link controller="cumpleanios" params="[fecha:fecha.next()]"
 			action="verCumpleanios">Siguiente</g:link>
 	</div>
 </body>
