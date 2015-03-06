@@ -52,7 +52,7 @@
 
 	<script type="text/javascript">
 		console.log("Punto 1");
-		$("#list-empleado").hide();
+		$("#list-empleado").hide();					/*	$("#id se trae del hmtl todas las variables con eses id */
 		$("#textoRespuesta").hide();
 		$("#botonBuscador").click(buscar)
 		$("#textBusqueda").keypress(verificarEnter)
@@ -67,7 +67,6 @@
 				$("#offset").val(offset+50)
 				buscar();
 			}
-
 		}
 		function mostrarAnteriores() {
 			var offset = parseInt($("#offset").val(),10);
@@ -81,7 +80,7 @@
 
 		}
 		function verificarEnter(event) {
-			if (event.which == 13) {
+			if (event.which == 13) { 				/*para que tome el enter. Se tiene que comparar con 13*/
 				buscar();
 			}
 
