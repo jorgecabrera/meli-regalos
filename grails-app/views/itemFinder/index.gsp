@@ -12,15 +12,16 @@
 </head>
 
 <body>
-	<g:hiddenField id="offset" name="offset" value="0"/>
-	<g:hiddenField id="idEmpleado" name="idEmpleado" value="${idEmpleado }" /> 
+	<g:hiddenField id="offset" name="offset" value="0" />
+	<g:hiddenField id="idEmpleado" name="idEmpleado" value="${idEmpleado }" />
+	<g:hiddenField id="maxRows" name="maxRows" value="0" />
 	<h1>Consulta a API mercado libre</h1>
 	<div>
-			<div class="form-group">
-				<label for="textBusqueda">Buscar:</label> <input type="text"
-					class="form-control" id="textBusqueda" placeholder="Buscar">
-					<button type="button" id="botonBuscador">Buscar</button>
-			</div>
+		<div class="form-group">
+			<label for="textBusqueda">Buscar:</label> <input type="text"
+				class="form-control" id="textBusqueda" placeholder="Buscar">
+			<button type="button" id="botonBuscador">Buscar</button>
+		</div>
 	</div>
 	<div id="list-empleado" class="content scaffold-list" role="main">
 		<div id="textoRespuesta"></div>
@@ -44,31 +45,44 @@
 
 			</tbody>
 		</table>
+		<div align="center">
+			<label id="anterior">Anterior</label> <label id="siguiente">Siguiente</label>
+		</div>
 	</div>
+
 	<script type="text/javascript">
 		console.log("Punto 1");
 		$("#list-empleado").hide();
 		$("#textoRespuesta").hide();
 		$("#botonBuscador").click(buscar)
 		$("#textBusqueda").keypress(verificarEnter)
-		function verificarEnter(event){
-			if(event.which==13){
-				buscar();
-				}
-
+		$("#siguiente").click(mostrarSiguientes)
+		$("#anterior").click(mostrarAnteriores)
+		function mostrarSiguientes() {
+			var offset = $("#offset").val();
+			if (offset > 0) {
+				var nuevoOffset = $("#offset").val()
 			}
+		}
+		function verificarEnter(event) {
+			if (event.which == 13) {
+				buscar();
+			}
+
+		}
 		function mostrarResultado(data) {
 			console.log("Punto 5");
-			var infoRespuesta=document.getElementById("textoRespuesta");
-			infoRespuesta.innerHTML="<h1></h1>"
+			var infoRespuesta = document.getElementById("textoRespuesta");
+			infoRespuesta.innerHTML = "<h1></h1>"
+			$("#maxRows").innerHTML = data.paging.total;
 			$.each(data.results, agregarResultado)
 		}
-		
+
 		function buscar() {
-			var divRespuesta=$("#textoRespuesta")
+			var divRespuesta = $("#textoRespuesta")
 			divRespuesta.show();
 			$("#list-empleado").show();
-			var tabla=document.getElementById("contenido_tabla")
+			var tabla = document.getElementById("contenido_tabla")
 			while (tabla.firstChild) {
 				tabla.removeChild(tabla.firstChild);
 			}
@@ -77,7 +91,7 @@
 			var promise = $.get(
 					"https://api.mercadolibre.com/sites/MLA/search", {
 						q : busqueda,
-						offset:offset
+						offset : offset
 					});
 			console.log("Punto 2");
 			promise.done(mostrarResultado);
@@ -95,9 +109,8 @@
 			}
 			console.log($("#idEmpleado").val())
 			//console.log("antes del tittle")
-			html += "<td>"
-					+ "<a href='/meli-regalos/itemFinder/show/"+
-					item.id+"?idEmpleado="+$("#idEmpleado").val()+"'>"
+			html += "<td>" + "<a href='/meli-regalos/itemFinder/show/"
+					+ item.id + "?idEmpleado=" + $("#idEmpleado").val() + "'>"
 					+ item.title + "</a>"
 
 			"</td>";
