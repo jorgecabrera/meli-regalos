@@ -19,13 +19,6 @@
 <link rel="apple-touch-icon" sizes="114x114"
 	href="${assetPath(src: 'apple-touch-icon-retina.png')}">
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <asset:stylesheet src="application.css" />
 <asset:javascript src="application.js" />
 
@@ -36,9 +29,6 @@
 		<a href="#"><asset:image src="icrco-logo.gif" alt="ICR" /></a>
 	</div>
 	<g:layoutBody />
-	<div class="footer" role="contentinfo"></div>
-	<div id="spinner" class="spinner" style="display: none;">
-		<g:message code="spinner.alt" default="Loading&hellip;" />
-	</div>
+	<div class="footer" role="contentinfo"></div>																																																																																																																							
 </body>
 </html>
