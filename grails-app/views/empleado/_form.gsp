@@ -35,12 +35,12 @@
 		
 	</label>
 	
-<ul class="one-to-many">
+<ul class="one-to-many" style="list-style-type:none">
 <g:each in="${empleadoInstance?.regalos?}" var="r">
-    <li><g:link controller="regalo" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="regalo" action="show" id="${r.id}">${r?.descripcion}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="regalo" action="create" params="['empleado.id': empleadoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'regalo.label', default: 'Regalo')])}</g:link>
+<g:link controller="ItemFinder" action="index" params="['idEmpleado': empleadoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'regalo.label', default: 'Regalo')])}</g:link>
 </li>
 </ul>
 

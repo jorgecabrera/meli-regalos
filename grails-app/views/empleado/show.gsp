@@ -1,6 +1,6 @@
 
 <%@ page import="meli.regalos.Empleado"%>
-<%@ page import="helpers.InterpretadorFechas" %>
+<%@ page import="helpers.InterpretadorFechas"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +69,7 @@
 						<span class="property-value" aria-labelledby="regalos-label">
 							<g:link controller="regalo" action="show" id="${r.id}">
 								${r?.descripcion}
-							</g:link>  para  <g:link controller="Cumpleanios" action="verCumpleanios"
+							</g:link> para <g:link controller="Cumpleanios" action="verCumpleanios"
 								params="[fecha:"${InterpretadorFechas.interpretar(r?.fechaEntrega)}"]">
 								 "${InterpretadorFechas.interpretar(r?.fechaEntrega)}"
 							</g:link>
