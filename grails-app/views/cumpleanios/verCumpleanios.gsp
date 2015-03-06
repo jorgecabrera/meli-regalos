@@ -1,4 +1,5 @@
 <%@ page import="meli.regalos.Empleado"%>
+<%@ page import="helpers.InterpretadorFechas" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,9 +38,9 @@
 		<div class="pagination">
 			<g:paginate total="${empleadoInstanceCount ?: 0}" />
 		</div>
-		<g:link controller="cumpleanios" params="[fecha:fecha.previous()]"
+		<g:link controller="cumpleanios" params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
 			action="verCumpleanios">Anterior</g:link>
-		<g:link controller="cumpleanios" params="[fecha:fecha.next()]"
+		<g:link controller="cumpleanios" params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
 			action="verCumpleanios">Siguiente</g:link>
 	</div>
 </body>
