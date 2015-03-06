@@ -38,7 +38,7 @@ class RegaloController {
 		def fechaComparacion=new Date();
 		fechaComparacion.setYear(regaloInstance.empleado.fechaNacimiento.year)
 		regaloInstance.fechaEntrega=new Date();
-		regaloInstance.fechaEntrega=regaloInstance.empleado.fechaNacimiento;
+		regaloInstance.fechaEntrega=regaloInstance.empleado.fechaNacimiento.clone();
 		regaloInstance.fechaEntrega.year=((fechaComparacion >=regaloInstance.empleado.fechaNacimiento)?new Date().year+1:new Date().year);
 		println regaloInstance.fechaEntrega
 		regaloInstance.save flush:true

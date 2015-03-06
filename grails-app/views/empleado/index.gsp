@@ -56,7 +56,8 @@
 						<td>
 							${fieldValue(bean: empleadoInstance, field: "nombre")}
 						</td>
-						<td><g:formatDate date="${empleadoInstance.fechaNacimiento}" /></td>
+						<td>${fieldValue(bean: empleadoInstance, field: "fechaNacimiento").substring(0,10)}
+						</td>
 
 
 
