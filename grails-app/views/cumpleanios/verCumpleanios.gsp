@@ -4,11 +4,30 @@
 <html>
 <head>
 <meta name="layout" content="formatoAplicacion">
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<g:set var="entityName"
+	value="${message(code: 'empleado.label', default: 'Empleado')}" />
+<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 
 <body>
+	<a href="#list-empleado" class="skip" tabindex="-1"><g:message
+			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
+	<div class="nav" role="navigation">
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message
+						code="default.home.label" /></a></li>
+			<!-- SE CAMBIA LO QUE DICE EL HOME -->
+		</ul>
+	</div>
 	<div id="list-empleado" class="content scaffold-list" role="main">
+		<h1>
+			<g:message code="Cumpleañeros del ${fecha.getAt(Calendar.DAY_OF_MONTH)}/${fecha.getAt(Calendar.MONTH)+1}/${fecha.getAt(Calendar.YEAR)}" />
+		</h1>
+		<g:if test="${flash.message}">
+			<div class="message" role="status">
+				${flash.message}
+			</div>
+		</g:if>
 		<table>
 			<thead>
 				<tr>
@@ -38,9 +57,11 @@
 		<div class="pagination">
 			<g:paginate total="${empleadoInstanceCount ?: 0}" />
 		</div>
-		<g:link controller="cumpleanios" params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
+		<g:link controller="cumpleanios"
+			params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
 			action="verCumpleanios">Anterior</g:link>
-		<g:link controller="cumpleanios" params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
+		<g:link controller="cumpleanios"
+			params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
 			action="verCumpleanios">Siguiente</g:link>
 	</div>
 </body>
