@@ -55,8 +55,11 @@
 			</tbody>
 		</table>
 		<div class="nav" role="navigation">
-			<input type="date" name="cumpleanios" step="1" min="1991-01-01"
-				max="2030-12-31" value="2015-03-29" autocomplete="on">
+			<form>
+				<input type="date" name="fecha" step="1" min="1991-01-01"
+					max="2030-12-31" value="${new Date()}" autocomplete="on">
+				<button type="submit">Ir</button>
+			</form>
 		</div>
 		<div class="pagination">
 			<g:link controller="cumpleanios"
