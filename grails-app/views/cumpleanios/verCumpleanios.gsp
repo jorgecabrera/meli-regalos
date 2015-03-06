@@ -54,15 +54,18 @@
 				</g:each>
 			</tbody>
 		</table>
-		<div class="pagination">
-			<g:paginate total="${empleadoInstanceCount ?: 0}" />
+		<div class="nav" role="navigation">
+			<input type="date" name="cumpleanios" step="1" min="1991-01-01"
+				max="2030-12-31" value="2015-03-29" autocomplete="on">
 		</div>
-		<g:link controller="cumpleanios"
-			params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
-			action="verCumpleanios">Anterior</g:link>
-		<g:link controller="cumpleanios"
-			params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
-			action="verCumpleanios">Siguiente</g:link>
+		<div class="pagination">
+			<g:link controller="cumpleanios"
+				params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
+				action="verCumpleanios">Anterior</g:link>
+			<g:link controller="cumpleanios"
+				params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
+				action="verCumpleanios">Siguiente</g:link>
+		</div>
 	</div>
 </body>
 </html>
