@@ -59,10 +59,26 @@
 		$("#siguiente").click(mostrarSiguientes)
 		$("#anterior").click(mostrarAnteriores)
 		function mostrarSiguientes() {
-			var offset = $("#offset").val();
-			if (offset > 0) {
-				var nuevoOffset = $("#offset").val()
+			var offset = parseInt($("#offset").val(),10);
+			if (offset + 50 > $("#maxRows").val()) {
+				console.log("se supero el max offset")
+
+			} else {
+				$("#offset").val(offset+50)
+				buscar();
 			}
+
+		}
+		function mostrarAnteriores() {
+			var offset = parseInt($("#offset").val(),10);
+			if (offset - 50 < 0) {
+				console.log("se supero el min offset")
+
+			} else {
+				$("#offset").val(offset-50)
+				buscar();
+			}
+
 		}
 		function verificarEnter(event) {
 			if (event.which == 13) {
@@ -74,7 +90,7 @@
 			console.log("Punto 5");
 			var infoRespuesta = document.getElementById("textoRespuesta");
 			infoRespuesta.innerHTML = "<h1></h1>"
-			$("#maxRows").innerHTML = data.paging.total;
+			$("#maxRows").val(data.paging.total);
 			$.each(data.results, agregarResultado)
 		}
 
