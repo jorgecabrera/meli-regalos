@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="formatoAplicacion">
 		<g:set var="entityName" value="${message(code: 'regalo.label', default: 'Regalo')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				
 			</ul>
 		</div>
 		<div id="show-regalo" class="content scaffold-show" role="main">
@@ -43,9 +43,11 @@
 			
 				<g:if test="${regaloInstance?.imagen}">
 				<li class="fieldcontain">
-					<span id="imagen-label" class="property-label"><g:message code="regalo.imagen.label" default="Imagen" /></span>
+					<span id="imagen-label" class="property-label">
+					<g:message code="regalo.imagen.label" default="Imagen" />
+					</span>
 					
-						<span class="property-value" aria-labelledby="imagen-label"><g:fieldValue bean="${regaloInstance}" field="imagen"/></span>
+						<span class="property-value" aria-labelledby="imagen-label"><img src="${fieldValue(bean: regaloInstance, field: "imagen")}"></span>
 					
 				</li>
 				</g:if>
@@ -63,7 +65,7 @@
 				<li class="fieldcontain">
 					<span id="url-label" class="property-label"><g:message code="regalo.url.label" default="Url" /></span>
 					
-						<span class="property-value" aria-labelledby="url-label"><g:fieldValue bean="${regaloInstance}" field="url"/></span>
+						<span class="property-value" aria-labelledby="url-label"><a href="${fieldValue(bean: regaloInstance, field: "url")}">${fieldValue(bean: regaloInstance, field: "url")}</a></span>
 					
 				</li>
 				</g:if>
