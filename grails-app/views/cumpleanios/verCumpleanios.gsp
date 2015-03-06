@@ -20,16 +20,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<g:each in="${empleadoList}" status="i" var="empleado">
+				<g:each in="${empleadoList}" status="i" var="regalo">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td>
-							${empleado.nombre}
+							${regalo.empleado.nombre}
 						</td>
 						<td>
-							${empleado.apellido}
+							${regalo.empleado.apellido}
 						</td>
 						<td>
-							${empleado.regalos[0]}
+							${regalo.url}
 						</td>
 				</g:each>
 			</tbody>
