@@ -14,7 +14,8 @@
 	<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
-						code="default.home.label" /></a></li> <!-- SE CAMBIA LO QUE DICE EL HOME -->
+						code="default.home.label" /></a></li>
+			<!-- SE CAMBIA LO QUE DICE EL HOME -->
 			<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
@@ -36,12 +37,12 @@
 					<g:sortableColumn property="apellido"
 						title="${message(code: 'empleado.apellido.label', default: 'Apellido')}" />
 
-					<g:sortableColumn property="fechaNacimiento"
-						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
+
 
 					<g:sortableColumn property="nombre"
 						title="${message(code: 'empleado.nombre.label', default: 'Nombre')}" />
-
+					<g:sortableColumn property="fechaNacimiento"
+						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
 				</tr>
 			</thead>
 			<tbody>
@@ -52,12 +53,12 @@
 						<td><g:link action="show" id="${empleadoInstance.id}">
 								${fieldValue(bean: empleadoInstance, field: "apellido")}
 							</g:link></td>
-
-						<td><g:formatDate date="${empleadoInstance.fechaNacimiento}" /></td>
-
 						<td>
 							${fieldValue(bean: empleadoInstance, field: "nombre")}
 						</td>
+						<td><g:formatDate date="${empleadoInstance.fechaNacimiento}" /></td>
+
+
 
 					</tr>
 				</g:each>
