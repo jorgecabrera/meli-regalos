@@ -36,7 +36,7 @@
 					<g:hiddenField name="imagen" id="imagen"/>
 					<g:hiddenField name="url" id="url"/>
 					<g:hiddenField name="empleado" id="idEmpleado" value="${idEmpleado }"/>
-					<input type="submit">	
+					<input type="submit" value="Regalar">	
 				</form>
 							
 			</div>
