@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="formatoAplicacion">
 		<g:set var="entityName" value="${message(code: 'regalo.label', default: 'Regalo')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="imagen" title="${message(code: 'regalo.imagen.label', default: 'Imagen')}" />
 					
-						<g:sortableColumn property="anio" title="${message(code: 'regalo.anio.label', default: 'Anio')}" />
+						<g:sortableColumn property="fechaEntrega" title="${message(code: 'regalo.fechaEntrega.label', default: 'Fecha de entrega')}" />
 					
 						<g:sortableColumn property="url" title="${message(code: 'regalo.url.label', default: 'Url')}" />
 					
@@ -40,13 +40,13 @@
 				<g:each in="${regaloInstanceList}" status="i" var="regaloInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${regaloInstance.id}">${fieldValue(bean: regaloInstance, field: "empleado")}</g:link></td>
+						<td>${fieldValue(bean: regaloInstance, field: "empleado")}</td>
 					
-						<td>${fieldValue(bean: regaloInstance, field: "descripcion")}</td>
+						<td><g:link action="show" id="${regaloInstance.id}">${fieldValue(bean: regaloInstance, field: "descripcion")}</g:link></td>
 					
-						<td>${fieldValue(bean: regaloInstance, field: "imagen")}</td>
+						<td><img src="${fieldValue(bean: regaloInstance, field: "imagen")}"></td>
 					
-						<td>${fieldValue(bean: regaloInstance, field: "anio")}</td>
+						<td>${fieldValue(bean: regaloInstance, field: "fechaEntrega").substring(0,10)}</td>
 					
 						<td>${fieldValue(bean: regaloInstance, field: "url")}</td>
 					
