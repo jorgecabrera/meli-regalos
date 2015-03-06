@@ -2,7 +2,10 @@ package meli.regalos
 
 class ItemFinderController {
 
-    def index() {}
+    def index() {
+		def idEmpleado=params.idEmpleado?params.idEmpleado:0;
+		[idEmpleado:idEmpleado]
+	}
 	
 	def show(String id) {
 		println(id)

@@ -12,7 +12,8 @@
 </head>
 
 <body>
-	<g:hiddenField id="offset" name="offset" value="0" />
+	<g:hiddenField id="offset" name="offset" value="0"/>
+	<g:hiddenField id="idEmpleado" name="idEmpleado" value="${idEmpleado }" /> 
 	<h1>Consulta a API mercado libre</h1>
 	<div>
 			<div class="form-group">
@@ -92,9 +93,11 @@
 			} else {
 				html += "<tr class='odd'>";
 			}
+			console.log($("#idEmpleado").val())
 			//console.log("antes del tittle")
 			html += "<td>"
-					+ "<a href='/meli-regalos/itemFinder/show/"+item.id+"'>"
+					+ "<a href='/meli-regalos/itemFinder/show/"+
+					item.id+"?idEmpleado="+$("#idEmpleado").val()+"'>"
 					+ item.title + "</a>"
 
 			"</td>";
