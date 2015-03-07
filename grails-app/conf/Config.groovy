@@ -43,6 +43,14 @@ grails.controllers.defaultScope = 'singleton'
 
 // GSP settings
 grails {
+	mail {
+		host = "smtp.live.com"
+		port = 587
+		username = "urieljorgemysler@hotmail.com"
+		password = "12345abc"
+		props = ["mail.smtp.starttls.enable":"true",
+			"mail.smtp.port":"587"]
+	}
     views {
         gsp {
             encoding = 'UTF-8'
