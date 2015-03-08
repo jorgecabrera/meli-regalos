@@ -16,8 +16,8 @@ class EnviarMailController {
 			to "jorgejcabrera@hotmail.com.ar"
 			from "urieljorgemysler@hotmail.com"
 			subject "Gastos del Mes"
-			text " Los gastos del mes son : ${gastosDelMes}. Los regalos comprados son ${regalosDelMes.each{}.descripcion}"
+			text " Los gastos del mes son : ${gastosDelMes} . Los regalos comprados son ${regalosDelMes.each{}.descripcion} ."
 		}
-		render "OK"
+		render "Se ha enviado el resumen del mes a jorgejcabrera@hotmail.com.ar"
 	}
 }
