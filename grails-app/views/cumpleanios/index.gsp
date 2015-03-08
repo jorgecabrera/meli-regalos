@@ -16,7 +16,9 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<!-- SE CAMBIA LO QUE DICE EL HOME -->
+			<li><g:link class="list" action="enviarResumen">
+					Enviar Resumen
+				</g:link></li>
 		</ul>
 	</div>
 	<div id="list-empleado" class="content scaffold-list" role="main">

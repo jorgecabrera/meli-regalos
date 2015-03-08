@@ -1,13 +1,14 @@
 package meli.regalos
 
 class CumpleaniosController {
-
-   /* def index() { }*/
 	def index(){
 		def fechaActual = params.get("fecha");
-			if(fechaActual == null) 
-				fechaActual =  new Date().clearTime();
-			else fechaActual = Date.parse('yyyy-MM-dd',fechaActual).clearTime();																			
+		if(fechaActual == null)
+			fechaActual =  new Date().clearTime();
+		else fechaActual = Date.parse('yyyy-MM-dd',fechaActual).clearTime();
 		[empleadoList:Regalo.findAllByFechaEntrega(fechaActual),fecha:fechaActual];
+	}
+	def enviarResumen(){
+		redirect(controller:"EnviarMail",action:"enviarMail");
 	}
 }
