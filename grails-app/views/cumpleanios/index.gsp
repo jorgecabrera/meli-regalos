@@ -64,10 +64,10 @@
 		<div class="pagination">
 			<g:link controller="cumpleanios"
 				params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
-				action="verCumpleanios">Anterior</g:link>
+				action="index">Anterior</g:link>
 			<g:link controller="cumpleanios"
 				params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
-				action="verCumpleanios">Siguiente</g:link>
+				action="index">Siguiente</g:link>
 		</div>
 	</div>
 </body>

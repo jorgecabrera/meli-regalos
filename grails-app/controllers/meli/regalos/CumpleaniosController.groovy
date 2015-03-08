@@ -2,8 +2,8 @@ package meli.regalos
 
 class CumpleaniosController {
 
-    def index() { }
-	def verCumpleanios(){
+   /* def index() { }*/
+	def index(){
 		def fechaActual = params.get("fecha");
 			if(fechaActual == null) 
 				fechaActual =  new Date().clearTime();

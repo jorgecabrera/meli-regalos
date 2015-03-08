@@ -9,6 +9,7 @@ class Regalo {
 	Date fechaEntrega;
 	String descripcion;
 	String imagen;
+	int anio;
 	float precio;
 	static belongsTo= [empleado:Empleado];
 	static constraints = { empleado nullable:true;
@@ -16,5 +17,6 @@ class Regalo {
 		imagen nullable:true;
 		precio nullable:true;
 		fechaEntrega nullable:true;
+		anio nullable:true;
 	}
 }
