@@ -20,7 +20,7 @@
 	</div>
 	<div class="pagination">
 		<g:link controller="enviarMail"
-			action="index">Enviar resumen</g:link>
+			action="enviarMail">Enviar resumen</g:link>
 	</div>
 </body>
 </html>
