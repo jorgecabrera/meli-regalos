@@ -5,10 +5,13 @@ class EnviarMailController {
  	def mailService;
 	def index() {
 		def fecha = new Date();
+		float gastosDelMes = 0;
 		def coleccionDeRegalos = Regalo.findAll();
 		def regalosDelMes = coleccionDeRegalos.findAll {(it.fechaEntrega.getAt(Calendar.MONTH)==fecha.getAt(Calendar.MONTH) )&&(it.fechaEntrega.getAt(Calendar.YEAR)==fecha.getAt(Calendar.YEAR) )};
-		println regalosDelMes;
-		enviarMail;
+		for(int i=0; i<regalosDelMes.size();i++)
+			gastosDelMes += regalosDelMes[i].precio
+		println "los gastos del mes son :"+gastosDelMes;
+			enviarMail;
 	}
 	def enviarMail = {
 		mailService.sendMail{
