@@ -76,13 +76,11 @@
 						</span>
 					</g:each></li>
 			</g:if>
-
-			<li class="fieldcontain"><span id="agregar-regalo"
-				class="property-value"> <a
-					href="${createLink(controller:'ItemFinder',params:[idEmpleado:empleadoInstance?.id])}">Agregar
-						regalo</a>
-			</span></li>
-
+				<li class="fieldcontain"><span id="agregar-regalo"
+					class="property-value"> <a
+						href="${createLink(controller:'ItemFinder',params:[idEmpleado:empleadoInstance?.id])}">Agregar
+							regalo</a>
+				</span></li>
 		</ol>
 		<g:form url="[resource:empleadoInstance, action:'delete']"
 			method="DELETE">

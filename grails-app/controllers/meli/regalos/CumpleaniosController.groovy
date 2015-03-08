@@ -8,7 +8,4 @@ class CumpleaniosController {
 		else fechaActual = Date.parse('yyyy-MM-dd',fechaActual).clearTime();
 		[empleadoList:Regalo.findAllByFechaEntrega(fechaActual),fecha:fechaActual];
 	}
-	def enviarResumen(){
-		redirect(controller:"EnviarMail",action:"enviarMail");
-	}
 }

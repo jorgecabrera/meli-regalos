@@ -9,7 +9,9 @@ import grails.transaction.Transactional
 class RegaloController {
 
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	def enviarResumen(){
+		redirect(controller:"EnviarMail",action:"enviarMail");
+	}
 	def index(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
 		respond Regalo.list(params), model:[regaloInstanceCount: Regalo.count()]

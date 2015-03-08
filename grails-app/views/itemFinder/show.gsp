@@ -38,7 +38,6 @@
 					<g:hiddenField name="empleado" id="idEmpleado" value="${idEmpleado }"/>
 					<input type="submit" value="Regalar">	
 				</form>
-							
 			</div>
 		</div>
 	</div>
