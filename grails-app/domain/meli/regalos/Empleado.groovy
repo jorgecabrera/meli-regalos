@@ -10,4 +10,5 @@ class Empleado {
 	public String toString(){
 		return nombre +' ' +apellido;
 	}
+	//static fetchMode = [regalos: 'eager'];
 }

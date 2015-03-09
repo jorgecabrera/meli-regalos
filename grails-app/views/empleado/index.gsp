@@ -40,14 +40,13 @@
 					<g:sortableColumn property="fechaNacimiento"
 						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
 					<g:sortableColumn property="Regalos"
-						title="${message(code: 'empleado.regalo.label', default: 'Regalos')}" />
+						title="${message(code: 'empleado.regalos.label', default: 'Regalo')}" />
 				</tr>
 			</thead>
 			<tbody>
 				<g:each in="${empleadoInstanceList}" status="i"
 					var="empleadoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 						<td><g:link action="show" id="${empleadoInstance.id}">
 								${fieldValue(bean: empleadoInstance, field: "apellido")}
 							</g:link></td>
@@ -58,9 +57,13 @@
 							${fieldValue(bean: empleadoInstance, field: "fechaNacimiento").substring(0,10)}
 						</td>
 						<td id="contenidoRegalo${empleadoInstance.id}">
-							<button type="button" id="botonVerRegalo${empleadoInstance.id}" onClick="ocultar(${empleadoInstance.id})">Ver</button>
+							<button type="button" id="botonVerRegalo${empleadoInstance.id}"
+								onClick="ocultar(${empleadoInstance.id})">Ver</button>
 						</td>
 					</tr>
+					<hiddenField name="listaRegalos"
+						id="regalos${empleadoInstance.id}"
+						value="${empleadoInstance.regalos}" />
 				</g:each>
 			</tbody>
 		</table>
@@ -73,14 +76,19 @@
 		function ocultar(id) {
 			var idRegalo = "botonVerRegalo" + id;
 			document.getElementById(idRegalo).style.visibility= 'hidden';
-			mostrarRegalos(id);
+			var regalos = $("#regalos"+id);
+			console.log(regalos);
+			mostrarRegalos(regalos,id);
 		}
-		function mostrarRegalos(id){
-			var btn = document.createElement("BUTTON");
-			var text = document.createTextNode("Click Me");
-			btn.appendChild(text);
-			$("#contenidoRegalo"+id).append(btn);
-			
+		function mostrarRegalos(empleado,id){
+			var tabla = document.createElement("table")
+			var thead = document.createElement("thead")
+			var tblBody = document.createElement("tbody")
+			var tr = document.createElement("tr");
+			$("#contenidoRegalo"+id).append(tabla);
+			$("#contenidoRegalo"+id).append(thead);
+			$("#contenidoRegalo"+id).append(tblBody);
+			$("#contenidoRegalo"+id).append(tr);
 		}
 	</script>
 </body>
