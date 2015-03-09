@@ -53,21 +53,21 @@
 				</g:each>
 			</tbody>
 		</table>
-		<div class="nav" role="navigation">
+		<div class="nav" role="navigation" align="center">
 			<form>
 				<input type="date" name="fecha" step="1" min="1991-01-01"
 					max="2030-12-31" value="${new Date()}" autocomplete="on">
 				<button type="submit">Ir</button>
 			</form>
 		</div>
-		<div class="pagination">
+		<fieldset class="buttons">
 			<g:link controller="cumpleanios"
 				params="[fecha: InterpretadorFechas.interpretar(fecha.previous())]"
 				action="index">Anterior</g:link>
 			<g:link controller="cumpleanios"
 				params="[fecha: InterpretadorFechas.interpretar(fecha.next())]"
 				action="index">Siguiente</g:link>
-		</div>
+		</fieldset>
 	</div>
 </body>
 </html>

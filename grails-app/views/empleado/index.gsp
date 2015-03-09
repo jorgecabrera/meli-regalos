@@ -33,16 +33,14 @@
 		<table>
 			<thead>
 				<tr>
-
 					<g:sortableColumn property="apellido"
 						title="${message(code: 'empleado.apellido.label', default: 'Apellido')}" />
-
-
-
 					<g:sortableColumn property="nombre"
 						title="${message(code: 'empleado.nombre.label', default: 'Nombre')}" />
 					<g:sortableColumn property="fechaNacimiento"
 						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
+					<g:sortableColumn property="Regalos"
+						title="${message(code: 'empleado.regalo.label', default: 'Regalos')}" />
 				</tr>
 			</thead>
 			<tbody>
@@ -56,11 +54,12 @@
 						<td>
 							${fieldValue(bean: empleadoInstance, field: "nombre")}
 						</td>
-						<td>${fieldValue(bean: empleadoInstance, field: "fechaNacimiento").substring(0,10)}
+						<td>
+							${fieldValue(bean: empleadoInstance, field: "fechaNacimiento").substring(0,10)}
 						</td>
-
-
-
+						<td id="contenidoRegalo${empleadoInstance.id}">
+							<button type="button" id="botonVerRegalo${empleadoInstance.id}" onClick="ocultar(${empleadoInstance.id})">Ver</button>
+						</td>
 					</tr>
 				</g:each>
 			</tbody>
@@ -69,5 +68,21 @@
 			<g:paginate total="${empleadoInstanceCount ?: 0}" />
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		function ocultar(id) {
+			var idRegalo = "botonVerRegalo" + id;
+			document.getElementById(idRegalo).style.visibility= 'hidden';
+			mostrarRegalos(id);
+		}
+		function mostrarRegalos(id){
+			var tablaRegalo = "contenidoRegalo" + id;
+			console.log(tablaRegalo);
+			var btn = document.createElement("BUTTON");
+			var text = document.createTextNode("Click Me");
+			btn.appendChild(text);
+			tablaRegalo.innerHTML= btn;
+		}
+	</script>
 </body>
 </html>

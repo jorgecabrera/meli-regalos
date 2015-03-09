@@ -8,7 +8,7 @@ class ItemFinderController {
 	}
 	
 	def show(String id) {
-		println(id)
+		//println(id)
 		String buscado=params.q?:"";;
 		def idEmpleado=params.idEmpleado?:0;
 		[id:id,buscado:buscado,idEmpleado:idEmpleado]

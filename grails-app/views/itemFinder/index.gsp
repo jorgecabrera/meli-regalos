@@ -19,7 +19,7 @@
 	<div>
 		<div class="form-group">
 			<label for="textBusqueda">Buscar:</label> <input type="text"
-				class="form-control" id="textBusqueda" placeholder="Buscar">
+				class="form-control" id="textBusqueda" placeholder="escriba aqui">
 			<button type="button" id="botonBuscador">Buscar</button>
 		</div>
 	</div>
@@ -28,7 +28,6 @@
 		<table>
 			<thead>
 				<tr>
-
 					<g:sortableColumn property="descripcion"
 						title="${message(code: 'descripcion',default: 'Descripcion')}" />
 
@@ -45,7 +44,7 @@
 
 			</tbody>
 		</table>
-		<div align="center">
+		<div style="text-align:center">
 			<label id="anterior">Anterior</label> <label id="siguiente">Siguiente</label>
 		</div>
 	</div>
@@ -72,18 +71,15 @@
 			var offset = parseInt($("#offset").val(),10);
 			if (offset - 50 < 0) {
 				console.log("se supero el min offset")
-
 			} else {
 				$("#offset").val(offset-50)
 				buscar();
 			}
-
 		}
 		function verificarEnter(event) {
 			if (event.which == 13) { 				/*para que tome el enter. Se tiene que comparar con 13*/
 				buscar();
 			}
-
 		}
 		function mostrarResultado(data) {
 			console.log("Punto 5");
@@ -92,9 +88,8 @@
 			$("#maxRows").val(data.paging.total);
 			$.each(data.results, agregarResultado)
 		}
-
 		function buscar() {
-			var divRespuesta = $("#textoRespuesta")
+			var divRespuesta = $("#textoRespuesta");
 			divRespuesta.show();
 			$("#list-empleado").show();
 			var tabla = document.getElementById("contenido_tabla")
