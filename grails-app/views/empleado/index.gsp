@@ -76,12 +76,11 @@
 			mostrarRegalos(id);
 		}
 		function mostrarRegalos(id){
-			var tablaRegalo = "contenidoRegalo" + id;
-			console.log(tablaRegalo);
 			var btn = document.createElement("BUTTON");
 			var text = document.createTextNode("Click Me");
 			btn.appendChild(text);
-			tablaRegalo.innerHTML= btn;
+			$("#contenidoRegalo"+id).append(btn);
+			
 		}
 	</script>
 </body>
