@@ -10,6 +10,14 @@ class EmpleadoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	def verCalendario(){
+		redirect(controller:"Cumpleanios",action:"index")
+	}
+	
+	def verListaRegalos(){
+		redirect(controller:"Regalo",action:"index");
+	}
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Empleado.list(params), model:[empleadoInstanceCount: Empleado.count()]

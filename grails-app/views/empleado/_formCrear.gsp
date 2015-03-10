@@ -1,7 +1,5 @@
 <%@ page import="meli.regalos.Empleado" %>
-
-
-
+	º
 <div class="fieldcontain ${hasErrors(bean: empleadoInstance, field: 'apellido', 'error')} required">
 	<label for="apellido">
 		<g:message code="empleado.apellido.label" default="Apellido" />

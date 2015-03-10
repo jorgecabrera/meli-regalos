@@ -12,8 +12,6 @@ class EnviarMailController {
 		def regalosDelMes = coleccionDeRegalos.findAll {(it.fechaEntrega.getAt(Calendar.MONTH)==fecha.getAt(Calendar.MONTH) )&&(it.fechaEntrega.getAt(Calendar.YEAR)==fecha.getAt(Calendar.YEAR))};
 		for(int i=0; i<regalosDelMes.size();i++)
 			gastosDelMes += regalosDelMes[i].precio;
-		println regalosDelMes;	
-		println "los gastos del mes son :"+gastosDelMes
 		mailService.sendMail{
 			to "jorgejcabrera@hotmail.com.ar"
 			from "urieljorgemysler@hotmail.com"
