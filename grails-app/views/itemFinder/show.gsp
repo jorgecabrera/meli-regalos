@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<input type="hidden" id="idItem" value="${id}">
+	<input type="hidden" id="idItem" value="${id }">
 	<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
@@ -60,14 +60,14 @@
 			agregarResultado(data);
 		}
 		function agregarResultado(item) {
-			var tabla= document.createElement("table")
-			var thead=document.createElement("thead")
+			var tabla = document.createElement("table")
+			var thead = document.createElement("thead")
 			var filaTitulos = document.createElement("tr")
-			var tituloIzq=document.createElement("th");
-			var textTituloIzq=document.createTextNode("Campo");
+			var tituloIzq = document.createElement("th");
+			var textTituloIzq = document.createTextNode("Campo");
 			tituloIzq.appendChild(textTituloIzq);
-			var tituloDer=document.createElement("th");
-			var textTituloDer=document.createTextNode("Valor");
+			var tituloDer = document.createElement("th");
+			var textTituloDer = document.createTextNode("Valor");
 			tituloDer.appendChild(textTituloDer);
 			filaTitulos.appendChild(tituloIzq);
 			filaTitulos.appendChild(tituloDer);

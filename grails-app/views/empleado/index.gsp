@@ -42,6 +42,10 @@
 						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
 					<g:sortableColumn property="Regalos"
 						title="${message(code: 'empleado.regalos.label', default: 'Regalo')}" />
+					<!-- es solo un test TODO sacar -->
+					<g:sortableColumn property="RegaloList"
+						title="${message(code: 'empleado.regalos.label', default: 'RegaloList')}"/>
+					<!-- Hasta aca -->
 				</tr>
 			</thead>
 			<tbody>
@@ -59,8 +63,13 @@
 						</td>
 						<td id="contenidoRegalo${empleadoInstance.id}">
 							<button type="button" id="botonVerRegalo${empleadoInstance.id}"
-								onClick="ocultar(${empleadoInstance.id})">Ver</button>
+								onClick="mostrarRegalos(${empleadoInstance.id})">Ver</button>
 						</td>
+						<!-- lo pongo para testear TODO sacar -->
+						<td>
+							${fieldValue(bean: empleadoInstance, field: "regalos.descripcion")}
+						</td>
+						<!-- Hasta aca -->
 					</tr>
 					<g:hiddenField name="listaRegalos"
 						id="regalos${empleadoInstance.id}"
@@ -74,22 +83,34 @@
 	</div>
 
 	<script type="text/javascript">
-		function ocultar(id) {
+		function mostrarRegalos(id) {
 			var idRegalo = "botonVerRegalo" + id;
 			document.getElementById(idRegalo).style.visibility= 'hidden';
-			var regalos = $("#regalos"+id).val();
-			console.log(regalos);
-			mostrarRegalos(regalos,id);
+			var regalos = $("#regalos" + id).val();
+			console.log(regalos)
+			agregarRegalo(regalos,id);
+
 		}
-		function mostrarRegalos(empleado,id){
-			var tabla = document.createElement("table")
-			var thead = document.createElement("thead")
-			var tblBody = document.createElement("tbody")
-			var tr = document.createElement("tr");
-			$("#contenidoRegalo"+id).append(tabla);
-			$("#contenidoRegalo"+id).append(thead);
-			$("#contenidoRegalo"+id).append(tblBody);
-			$("#contenidoRegalo"+id).append(tr);
+		function agregarRegalo(regalos,id){
+			var tabla = document.createElement("table");
+			var tblBody = document.createElement("tbody");
+			var elementoLista;
+			for(var i=0;i<regalos.length;i++){
+				elementoLista = regalos[i];
+				console.log("el elemento de lista es: "+elementoLista);
+				var filaRegalo = document.createElement("tr");
+				insertarFila(filaRegalo,elementoLista);
+			}
+			tblBody.appendChild(filaRegalo);
+			tabla.appendChild(tblBody);
+			var contenidoRegalos = document.getElementById(id);
+			contenidoRegalos.appendChild(tabla)
+		}
+		function insertarFila(filaRegalo,elementoLista){
+			regalo = document.createElement("td");
+			descripcion = document.createElement(elementoLista.descripcion)
+			regalo.appendChild(descripcion)
+			filaRegalo.appendChild(regalo);
 		}
 	</script>
 </body>
