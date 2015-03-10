@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<input type="hidden" id="idItem" value="${id }">
+	<input type="hidden" id="idItem" value="${id}">
 	<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta name="layout" content="formatoAplicacion">
 <g:set var="entityName"
 	value="${message(code: 'empleado.label', default: 'Empleado')}" />
@@ -61,7 +62,7 @@
 								onClick="ocultar(${empleadoInstance.id})">Ver</button>
 						</td>
 					</tr>
-					<hiddenField name="listaRegalos"
+					<g:hiddenField name="listaRegalos"
 						id="regalos${empleadoInstance.id}"
 						value="${empleadoInstance.regalos}" />
 				</g:each>
@@ -76,7 +77,7 @@
 		function ocultar(id) {
 			var idRegalo = "botonVerRegalo" + id;
 			document.getElementById(idRegalo).style.visibility= 'hidden';
-			var regalos = $("#regalos"+id);
+			var regalos = $("#regalos"+id).val();
 			console.log(regalos);
 			mostrarRegalos(regalos,id);
 		}

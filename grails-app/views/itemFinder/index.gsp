@@ -13,7 +13,7 @@
 
 <body>
 	<g:hiddenField id="offset" name="offset" value="0" />
-	<g:hiddenField id="idEmpleado" name="idEmpleado" value="${idEmpleado }" />
+	<g:hiddenField id="idEmpleado" name="idEmpleado" value="${idEmpleado}" />
 	<g:hiddenField id="maxRows" name="maxRows" value="0" />
 	<h1>Consulta a API mercado libre</h1>
 	<div>
