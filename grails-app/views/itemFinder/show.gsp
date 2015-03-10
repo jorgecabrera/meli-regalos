@@ -42,6 +42,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		if ($("#idEmpleado").val() == 0){
+			alert("Aun no se registro el usuario")
+			window.location.replace("http://localhost:8080/meli-regalos/empleado/index")
+		}
 		console.log($("#idItem").attr("value"))
 		var promise = $.get("https://api.mercadolibre.com/items/"
 				+ $("#idItem").attr("value"));
