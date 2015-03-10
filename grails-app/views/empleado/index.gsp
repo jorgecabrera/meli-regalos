@@ -40,12 +40,11 @@
 						title="${message(code: 'empleado.nombre.label', default: 'Nombre')}" />
 					<g:sortableColumn property="fechaNacimiento"
 						title="${message(code: 'empleado.fechaNacimiento.label', default: 'Fecha Nacimiento')}" />
-					<g:sortableColumn property="Regalos"
+					<!-- 					<g:sortableColumn property="Regalos"
 						title="${message(code: 'empleado.regalos.label', default: 'Regalo')}" />
-					<!-- es solo un test TODO sacar -->
 					<g:sortableColumn property="RegaloList"
-						title="${message(code: 'empleado.regalos.label', default: 'RegaloList')}"/>
-					<!-- Hasta aca -->
+						title="${message(code: 'empleado.regalos.label', default: 'RegaloList')}"/> -->
+
 				</tr>
 			</thead>
 			<tbody>
@@ -61,15 +60,14 @@
 						<td>
 							${fieldValue(bean: empleadoInstance, field: "fechaNacimiento").substring(0,10)}
 						</td>
-						<td id="contenidoRegalo${empleadoInstance.id}">
+						<!-- 					<td id="contenidoRegalo${empleadoInstance.id}">
 							<button type="button" id="botonVerRegalo${empleadoInstance.id}"
 								onClick="mostrarRegalos(${empleadoInstance.id})">Ver</button>
 						</td>
-						<!-- lo pongo para testear TODO sacar -->
 						<td>
 							${fieldValue(bean: empleadoInstance, field: "regalos.descripcion")}
-						</td>
-						<!-- Hasta aca -->
+						</td> -->
+	
 					</tr>
 					<g:hiddenField name="listaRegalos"
 						id="regalos${empleadoInstance.id}"
