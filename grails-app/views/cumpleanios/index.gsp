@@ -14,13 +14,14 @@
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
 		<ul>
-			<li><a class="home" href="http://localhost:8080/meli-regalos/empleado/index"><g:message
+			<li><a class="home"
+				href="http://localhost:8080/meli-regalos/empleado/index"><g:message
 						code="default.home.label" /></a></li>
-			</ul>
+		</ul>
 	</div>
 	<div id="list-empleado" class="content scaffold-list" role="main">
 		<h1>
-			<g:message code="Cumpleañeros del ${fecha.getAt(Calendar.DAY_OF_MONTH)}/${fecha.getAt(Calendar.MONTH)+1}/${fecha.getAt(Calendar.YEAR)}" />
+			<g:message code="Cumpleañeros del ${fecha.getAt(Calendar.DAY_OF_MONTH)}/${fecha.getAt(Calendar.MONTH)+1}/${fecha.getAt(Calendar.YEAR)} con regalo asignado" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
