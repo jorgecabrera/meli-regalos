@@ -102,11 +102,11 @@
 						q : busqueda,
 						offset : offset
 					});
-			console.log("Punto 2");
+			//console.log("Punto 2");
 			promise.done(mostrarResultado);
-			console.log("Punto 3");
+			//console.log("Punto 3");
 			promise.fail(mostrarError);
-			console.log("Punto 4");
+			//console.log("Punto 4");
 		}
 		function agregarResultado(index, item) {
 			//console.log(item.title);
@@ -137,7 +137,7 @@
 			console.log("Punto 6");
 			$("#respuesta_api").html("<li>Se produjo un errors</li>");
 		}
-		console.log("Punto 7");
+		//console.log("Punto 7");
 	</script>
 </body>
 </html>

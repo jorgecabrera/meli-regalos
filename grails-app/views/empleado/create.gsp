@@ -62,7 +62,7 @@
 				</div>
 			</fieldset>
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="save" onClick="validar()"
+				<g:submitButton name="create" class="save" onClick="return validar()"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
 		</g:form>
@@ -74,12 +74,16 @@
 			var expreg = new RegExp("^[A-Za-z]*$");
 			var nombreValido = expreg.test(nombre.toString());
 			var apellidoValido = expreg.test(apellido.toString());
-			if(!nombreValido){
-				alert('[ERROR] El nombre de usuario no es correcto');
-				}
-			if(!apellidoValido){
-				alert('[ERROR] El apellido del usuario es incorrecto');
+			if(nombreValido == false){
+				alert("El nombre de usuario no es correcto");
+				$("#nombreValido").val("")
+				return nombreValido;
 			}
+			if(apellidoValido == false){
+				alert("El apellido del usuario es incorrecto");
+				$("#apellidoValido").val("");
+				return apellidoValido;
+			}else return true;
 		}
 		
 	</script>
