@@ -33,13 +33,55 @@
 		</g:hasErrors>
 		<g:form url="[resource:empleadoInstance, action:'save']">
 			<fieldset class="form">
-				<g:render template="formCrear" />
+				<div
+					class="fieldcontain ${hasErrors(bean: empleadoInstance, field: 'apellido', 'error')} required">
+					<label for="apellido"> <g:message
+							code="empleado.apellido.label" default="Apellido" /> <span
+						class="required-indicator">*</span>
+					</label>
+					<g:textField name="apellido" required="" id="valorApellido"
+						value="${empleadoInstance?.apellido}" />
+				</div>
+				<div
+					class="fieldcontain ${hasErrors(bean: empleadoInstance, field: 'fechaNacimiento', 'error')} required">
+					<label for="fechaNacimiento"> <g:message
+							code="empleado.fechaNacimiento.label" default="Fecha Nacimiento" />
+						<span class="required-indicator">*</span>
+					</label>
+					<g:datePicker name="fechaNacimiento" precision="day"
+						value="${empleadoInstance?.fechaNacimiento}" />
+				</div>
+				<div
+					class="fieldcontain ${hasErrors(bean: empleadoInstance, field: 'nombre', 'error')} required">
+					<label for="nombre"> <g:message
+							code="empleado.nombre.label" default="Nombre" /> <span
+						class="required-indicator">*</span>
+					</label>
+					<g:textField name="nombre" required="" id="valorNombre"
+						value="${empleadoInstance?.nombre}" />
+				</div>
 			</fieldset>
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="save"
+				<g:submitButton name="create" class="save" onClick="validar()"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
 		</g:form>
 	</div>
+	<script type="text/javascript">
+		function validar(){
+			var nombre = $("#valorNombre").val();
+			var apellido = $("#valorApellido").val();
+			var expreg = new RegExp("^[A-Za-z]*$");
+			var nombreValido = expreg.test(nombre.toString());
+			var apellidoValido = expreg.test(apellido.toString());
+			if(!nombreValido){
+				alert('[ERROR] El nombre de usuario no es correcto');
+				}
+			if(!apellidoValido){
+				alert('[ERROR] El apellido del usuario es incorrecto');
+			}
+		}
+		
+	</script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
 		<ul>
-			<li><g:link class="home" action="index">
+			<li><g:link class="home" action="verEmpleados">
 					<g:message code="Principal" args="[entityName]" />
 				</g:link></li>
 			<li><g:link class="create" action="create">

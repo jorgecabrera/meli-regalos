@@ -17,7 +17,10 @@ class EmpleadoController {
 	def verListaRegalos(){
 		redirect(controller:"Regalo",action:"index");
 	}
-	
+
+	def verEmpleados(){
+		redirect(controller:"Empleado",action:"index");
+	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Empleado.list(params), model:[empleadoInstanceCount: Empleado.count()]

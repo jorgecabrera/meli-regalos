@@ -36,7 +36,6 @@
 
 					<g:sortableColumn property="precio"
 						title="${message(code: 'precio',default: 'Precio')}" />
-
 				</tr>
 			</thead>
 			<tbody id="contenido_tabla">
