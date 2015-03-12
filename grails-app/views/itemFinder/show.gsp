@@ -9,10 +9,10 @@
 
 </head>
 <body>
-	<input type="hidden" id="idItem" value="${id }">
+	<input type="hidden" id="idItem" value="${id}">
 	<div class="nav" role="navigation">
 		<ul>
-			<li><a class="home" href="${createLink(uri: '/')}"><g:message
+			<li><a class="home" href="http://localhost:8080/meli-regalos/empleado/index"><g:message
 						code="default.home.label" /></a></li>
 			<li><g:link class="list" action="index">
 					Volver
@@ -31,31 +31,35 @@
 		<div>
 			<div align="center">
 				<form action="${createLink(controller:'regalo',action:'save') }" method="post">
+					<!-- cuando hago el submit y llamo al controller save, se le va a pasar las etiquetas que estan
+					aca como atributo, y va a crear la un objeto de la clase -->
 					<g:hiddenField name="descripcion" id="desc"/>
 					<g:hiddenField name="precio" id="precio"/>
 					<g:hiddenField name="imagen" id="imagen"/>
 					<g:hiddenField name="url" id="url"/>
-					<g:hiddenField name="empleado" id="idEmpleado" value="${idEmpleado }"/>
+					<g:hiddenField name="idItem" id="idItem" value="${id}"/>
+					<g:hiddenField name="empleado" id="idEmpleado" value="${idEmpleado}"/>
 					<input type="submit" value="Regalar">	
 				</form>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
+		/****ESTA VALIDACION ES MALA, QUE PASA SI EL ID DEL EMPLEADO ES MAYOR A LA MAXIMA****/
 		if ($("#idEmpleado").val() == 0){
 			alert("Aun no se registro el usuario")
 			window.location.replace("http://localhost:8080/meli-regalos/empleado/index")
 		}
-		console.log($("#idItem").attr("value"))
+		console.log("el valor del item es "+$("#idItem").attr("value"))
 		var promise = $.get("https://api.mercadolibre.com/items/"
 				+ $("#idItem").attr("value"));
-		console.log("Punto 2");
+		console.log("el valor que tengo que guardar es :"+$("#idItem").attr("value"));
 		promise.done(mostrarResultado);
-		console.log("Punto 3");
+		//console.log("Punto 3");
 		promise.fail(mostrarError);
-		console.log("Punto 4");
+		//console.log("Punto 4");
 		function mostrarResultado(data) {
-			console.log("Punto 5");
+			//console.log("Punto 5");
 			$("#titulo-item").append(data.title)
 			$("#desc").val(data.title)
 			$("#precio").val(data.price)
@@ -103,7 +107,6 @@
 			valor.innerHTML="<a href='"+item.permalink+"'>"+item.permalink+"</a>"
 			url.appendChild(clave);
 			url.appendChild(valor);
-			
 			// agrega la hilera al final de la tabla (al final del elemento tblbody)
 			tblBody.appendChild(titulo);
 			tblBody.appendChild(imagen);

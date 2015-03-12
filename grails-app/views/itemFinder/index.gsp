@@ -121,7 +121,6 @@
 			html += "<td>" + "<a href='/meli-regalos/itemFinder/show/"
 					+ item.id + "?idEmpleado=" + $("#idEmpleado").val() + "'>"
 					+ item.title + "</a>"
-
 			"</td>";
 			//console.log("despues del tittle " + item.title);
 			html += "<td>"
