@@ -57,7 +57,7 @@
 		<div class="nav" role="navigation" align="center">
 			<form>
 				<input type="date" name="fecha" step="1" min="1991-01-01"
-					max="2030-12-31" value="${new Date()}">
+					max="2030-12-31" value="${InterpretadorFechas.interpretar(new Date())}">
 				<button type="submit">Ir</button>
 			</form>
 		</div>

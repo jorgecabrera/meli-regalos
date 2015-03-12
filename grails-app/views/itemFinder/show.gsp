@@ -31,8 +31,9 @@
 		<div>
 			<div align="center">
 				<form action="${createLink(controller:'regalo',action:'save') }" method="post">
-					<!-- cuando hago el submit y llamo al controller save, se le va a pasar las etiquetas que estan
-					aca como atributo, y va a crear la un objeto de la clase -->
+					<!-- cuando hago el submit y llamo al controller save, se le va a pasar 
+					las etiquetas que estan	aca como atributo, y va a crear la un objeto 
+					de la clase -->
 					<g:hiddenField name="descripcion" id="desc"/>
 					<g:hiddenField name="precio" id="precio"/>
 					<g:hiddenField name="imagen" id="imagen"/>

@@ -2,8 +2,6 @@ package meli.regalos
 
 import helpers.ItemML;
 
-
-
 class Regalo {
 	String url;
 	Date fechaEntrega;
@@ -20,5 +18,8 @@ class Regalo {
 		fechaEntrega nullable:true;
 		anio nullable:true;
 		idItem nullable:true;
+	}
+	public String toString(){
+		return idItem;
 	}
 }

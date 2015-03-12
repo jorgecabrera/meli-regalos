@@ -13,11 +13,9 @@ class EmpleadoController {
 	def verCalendario(){
 		redirect(controller:"Cumpleanios",action:"index")
 	}
-	
 	def verListaRegalos(){
 		redirect(controller:"Regalo",action:"index");
 	}
-
 	def verEmpleados(){
 		redirect(controller:"Empleado",action:"index");
 	}
@@ -29,11 +27,9 @@ class EmpleadoController {
     def show(Empleado empleadoInstance) {
         respond empleadoInstance
     }
-
     def create() {
         respond new Empleado(params)
     }
-
     @Transactional
     def save(Empleado empleadoInstance) {
         if (empleadoInstance == null) {

@@ -23,7 +23,6 @@
 			<li><g:link class="list" action="verListaRegalos">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
-
 		</ul>
 	</div>
 	<div id="list-empleado" class="content scaffold-list" role="main">

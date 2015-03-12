@@ -27,8 +27,6 @@ class RegaloController {
 
 	@Transactional
 	def save(Regalo regaloInstance) {
-		println "precio del regalo "+regaloInstance.precio;
-		println "el id del regalo es "+regaloInstance.idItem;
 		if (regaloInstance == null) {
 			notFound()
 			return
@@ -43,9 +41,7 @@ class RegaloController {
 		regaloInstance.fechaEntrega=new Date();
 		regaloInstance.fechaEntrega=regaloInstance.empleado.fechaNacimiento.clone();
 		regaloInstance.fechaEntrega.year=((fechaComparacion >=regaloInstance.empleado.fechaNacimiento)?new Date().year+1:new Date().year);
-		//println regaloInstance.fechaEntrega
 		regaloInstance.save flush:true
-		//println regaloInstance.errors
 		request.withFormat {
 			form multipartForm {
 				flash.message = message(code: 'default.created.message', args: [
