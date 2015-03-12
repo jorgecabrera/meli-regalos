@@ -63,7 +63,7 @@
 			</fieldset>
 			<fieldset class="buttons">
 				<g:submitButton name="create" class="save" onClick="return validar()"
-					value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					value="${message(code: 'default.button.create.label', default: 'Create')}" />  <!-- si la funcion validar devuelve true hace el submit, sino no -->
 			</fieldset>
 		</g:form>
 	</div>
